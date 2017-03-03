@@ -22,7 +22,7 @@ canvas {
 		<button id="game-button" style="height:100px; width:100%;" onmousedown="go()" onmouseup=";">GO!!!!!!!</button>
 		<br>
 		<br>
-		<button onmousedown="startGame()" onmouseup=";" style="width: 150px; margin: 2em auto; cursor: pointer; display: block;">Again</button>
+		<button onmousedown="again()" onmouseup=";" style="width: 150px; margin: 2em auto; cursor: pointer; display: block;">Again</button>
 	</div>
 	
 	<div id="youtube-container">
@@ -32,11 +32,20 @@ canvas {
 		</iframe>
 		</div>
 	</div>
+	<img id="glitter-cat" src="http://nelsonfest.com/glittercat.gif" style="width: 150px; margin: 2em auto; cursor: pointer; display: none;">
 </div>
+
+<style>
+body {
+    background-image: url("http://cdosaratogaspringstracksiderentals.com/yahoo_site_admin/assets/images/nelson_dirt_track.41211457.jpg");
+    background-color: #cccccc;
+}
+
+</style>
 
 <script>
 var horses;
-var winners;
+var finishers;
 var gameover;
 var finishLine;
 var myGameArea = {
@@ -53,19 +62,47 @@ var myGameArea = {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	}
 };
+
+// http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+function shuffle(array) {
+    var counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        var index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        var temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+
+    return array;
+}
+
 function startGame() {
+	var colors = shuffle([
+		"red", "orange", "yellow", "green", "blue"
+	]);
+	
     horses = [
-    	new component(30, 10, "red", 10, 10),
-    	new component(30, 10, "orange", 10, 30),
-    	new component(30, 10, "yellow", 10, 50),
-    	new component(30, 10, "green", 10, 70),
-    	new component(30, 10, "blue", 10, 90)
+    	new component(30, 10, colors[0], 10, 10),
+    	new component(30, 10, colors[1], 10, 30),
+    	new component(30, 10, colors[2], 10, 50),
+    	new component(30, 10, colors[3], 10, 70),
+    	new component(30, 10, colors[4], 10, 90)
     ];
-	winners = [];
+	
+	finishers = [];
 	gameover = false;
 	finishLine = new component(10, 270, "white", 450, 0);
 	myGameArea.start();
 }
+
 function component(width, height, color, x, y, type) {
     this.type = type;
     this.score = 0;
@@ -123,8 +160,24 @@ function updateGameArea() {
 		return;
 	}
 	
-	if (winners.length > 0) {
+	if (finishers.length > 0) {
 		gameover = true;
+		
+		finishers = finishers.sort(function(a, b){
+		  return a.x < b.x;
+		});
+		
+		var leadingHorse = finishers[0];
+		var winners = [leadingHorse];
+		
+		for (var i = 1; i < finishers.length; i++) {
+			if (finishers[i].x == leadingHorse.x) {
+				winners.push(finishers[i]);
+			} else {
+				break;
+			}
+		}
+		
 		var winnerNames = "";
 		for (var i = 0; i < winners.length; i++) {
 			winnerNames += winners[i].color + " ";
@@ -142,15 +195,19 @@ function updateGameArea() {
 		horse.newPos();
 		horse.update();
         if (horse.crashWith(finishLine)) {
-            winners.push(horse);
+            finishers.push(horse);
         }
     }
 }
 function go() {
     for (i = 0; i < horses.length; i += 1) {
 		var horse = horses[i];
-		horse.x += Math.random() * 10;
+		horse.x += Math.floor(Math.random() * 10);
     }
+}
+function again() {
+	startGame();
+	document.getElementById('glitter-cat').style.display = 'block';
 }
 </script>
 
