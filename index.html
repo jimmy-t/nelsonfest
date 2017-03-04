@@ -16,16 +16,19 @@ canvas {
 <!-- Inspired by https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity -->
 <body onload="startGame()">
 		
-<div id="body-container" style="width: 480px;">
-	<div id="game-container" >
-		<div id="canvas-marker">
+<div id="body-container" style="width:100%; text-align:center;">
+	<img id="nelson-fest-title" src="http://nelsonfest.com/nelsonfest.png" style="display:inline-block;">
+	<div id="game-container" style="width:480px; display:inline-block;" >
+		<div id="canvas-container" style="height:110px; width:100%; margin-top:20px; margin-bottom:20px;">
+			<div id="canvas-marker"></div>
+		</div>
 		<button id="game-button" style="height:100px; width:100%;" onmousedown="go()" onmouseup=";">GO!!!!!!!</button>
 		<br>
 		<br>
 		<button onmousedown="again()" onmouseup=";" style="width: 150px; margin: 2em auto; cursor: pointer; display: block;">Again</button>
 	</div>
 	
-	<div id="youtube-container">
+	<div id="youtube-container" style="width:100%; display:inline-block;">
 		<div data-video="BAIlVCStp3c" data-autoplay="1" data-loop="1" id="youtube-audio" style="width: 150px; margin: 2em auto; cursor: pointer; display: block;">
 		<img id="youtube-icon" src="https://i.imgur.com/quyUPXN.png">
 		<iframe id="youtube-player" frameborder="0" allowfullscreen="1" title="YouTube video player" width="0" height="0" src="https://www.youtube.com/embed/BAIlVCStp3c?autoplay=1&amp;loop=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fimg.labnol.org&amp;widgetid=1">
@@ -37,7 +40,7 @@ canvas {
 
 <style>
 body {
-    background-image: url("http://nelsonfest.com/nelson_dirt_track.jpg");
+    background-image: url("http://cdosaratogaspringstracksiderentals.com/yahoo_site_admin/assets/images/nelson_dirt_track.41211457.jpg");
     background-color: #cccccc;
 }
 
