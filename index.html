@@ -23,15 +23,15 @@ canvas {
 		<div id="canvas-container" style="height:110px; width:100%; margin-top:20px; margin-bottom:20px;">
 			<div id="canvas-marker"></div>
 		</div>
-		<button id="game-button" style="height:100px; width:100%;" onmousedown="go()" onmouseup=";">GO!!!!!!!</button>
+		<button id="game-button" style="height:100px; width:100%; background: url('http://nelsonfest.com/nelsonfest_gobutton.png') no-repeat;" onmousedown="go()" onmouseup=";"></button>
 		<br>
 		<br>
-		<button onmousedown="again()" onmouseup=";" style="width: 150px; margin: 2em auto; cursor: pointer; display: block;">Again</button>
+		<button id="again-button" onmousedown="again()" onmouseup=";" style="width: 150px; height: 25px; margin: 2em auto; cursor: pointer; display: block; background: url('http://nelsonfest.com/nelsonfest_againbutton.png') no-repeat;""></button>
 	</div>
 	
 	<div id="youtube-container" style="width:100%; display:inline-block;">
 		<div data-video="BAIlVCStp3c" data-autoplay="1" data-loop="1" id="youtube-audio" style="width: 150px; margin: 2em auto; cursor: pointer; display: block;">
-		<img id="youtube-icon" src="https://i.imgur.com/quyUPXN.png">
+		<img id="youtube-icon" src="http://nelsonfest.com/nelsonfest_playmusic.png">
 		<iframe id="youtube-player" frameborder="0" allowfullscreen="1" title="YouTube video player" width="0" height="0" src="https://www.youtube.com/embed/BAIlVCStp3c?autoplay=1&amp;loop=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fimg.labnol.org&amp;widgetid=1">
 		</iframe>
 		</div>
@@ -239,7 +239,7 @@ function again() {
     });
   } 
   function togglePlayButton(play) {    
-    document.getElementById("youtube-icon").src = play ? "https://i.imgur.com/IDzX9gL.png" : "https://i.imgur.com/quyUPXN.png";
+    document.getElementById("youtube-icon").src = play ? "http://nelsonfest.com/nelsonfest_stopmusic.png" : "http://nelsonfest.com/nelsonfest_playmusic.png";
   }
   function toggleAudio() {
     if ( player.getPlayerState() == 1 || player.getPlayerState() == 3 ) {
