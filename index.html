@@ -51,6 +51,9 @@ body {
 var horses;
 var finishers;
 var gameover;
+var isWinnerAnnounced;
+var winners;
+var winnerNames;
 var finishLine;
 var myGameArea = {
 	canvas : document.createElement("canvas"),
@@ -103,6 +106,8 @@ function startGame() {
 	
 	finishers = [];
 	gameover = false;
+	isWinnerAnnounced = false;
+	winnerNames = "";
 	finishLine = new component(10, 270, "white", 450, 0);
 	myGameArea.start();
 }
@@ -161,6 +166,10 @@ function component(width, height, color, x, y, type) {
 }
 function updateGameArea() {
 	if (gameover) {
+		if (!isWinnerAnnounced) {
+			alert((winners.length == 1 ? "Winner!\n" : "Tie!\n") + winnerNames);
+			isWinnerAnnounced = true;
+		}
 		return;
 	}
 	
@@ -172,7 +181,7 @@ function updateGameArea() {
 		});
 		
 		var leadingHorse = finishers[0];
-		var winners = [leadingHorse];
+		winners = [leadingHorse];
 		
 		for (var i = 1; i < finishers.length; i++) {
 			if (finishers[i].x == leadingHorse.x) {
@@ -182,13 +191,9 @@ function updateGameArea() {
 			}
 		}
 		
-		var winnerNames = "";
 		for (var i = 0; i < winners.length; i++) {
 			winnerNames += winners[i].color + " ";
 		}
-		
-		alert((winners.length == 1 ? "Winner!\n" : "Tie!\n") + winnerNames);
-		return;
 	}
 	
     myGameArea.clear();
