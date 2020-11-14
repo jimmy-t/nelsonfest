@@ -29,14 +29,14 @@ background: #fff;
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 @media screen and (min-width: 601px) {
   body {
-	font: 80px Georgia, Times, "Times New Roman", sans-serif;
+	font: 16px Georgia, Times, "Times New Roman", sans-serif;
   }
 }
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 600px) {
   body {
-	font: 30px Georgia, Times, "Times New Roman", sans-serif;
+	font: 40px Georgia, Times, "Times New Roman", sans-serif;
   }
 }
 #wrap { /* Fluid(%) or Fixed(px) */
