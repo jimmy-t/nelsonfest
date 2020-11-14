@@ -23,7 +23,7 @@ padding: 0;
 /* Variables - Edit these selectors to customise Aleksandr */
 
 body { /* Set your defaults for font, colour and background */
-font: 1rem Georgia, Times, "Times New Roman", sans-serif;
+font: 2vw Georgia, Times, "Times New Roman", sans-serif;
 color: #333;
 background: #fff;
 }
@@ -148,6 +148,9 @@ margin: 12px 0 0 0;
 width: 80%;
 float: right;
 }
+img {
+width:100%;
+}
 /* Typography */ 
 p {
 padding: 8px 20px; 
@@ -159,7 +162,7 @@ color: #ccc;
 }
 p.shortabout {
 float: left;
-margin: 10px 0 10px 10px;
+margin: 1.7vw 0 10px 10px;
 display: inline;
 padding: 0;
 width: 300px;
@@ -244,7 +247,7 @@ float: right;
 margin: 20px 0 10px 0;
 }
 h2 {
-font-size: 1.2rem;
+font-size: 2.5vw;
 line-height: 20px;
 font-weight: normal;
 text-align: left;
