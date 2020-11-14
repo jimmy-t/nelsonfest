@@ -1,0 +1,506 @@
+/* 
+Aleksandr
+------------------------------------------------------
+
+Reset
+Variables - Customise me
+Page Structure
+Typography
+Images
+Links
+Menu
+Footer
+Forms
+Comments
+
+------------------------------------------------------ */
+/* Reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, a, span, blockquote, table, th, td {
+margin: 0;
+padding: 0;
+}
+
+/* Variables - Edit these selectors to customise Aleksandr */
+
+body { /* Set your defaults for font, colour and background */
+font: 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+color: #333;
+background: #fff;
+}
+#wrap { /* Fluid(%) or Fixed(px) */
+width: 90%; 
+}
+#header { /* Scale the main banner */
+height: 307px; 
+background: url(../images/banner250.jpg) 0 0 no-repeat;
+}
+#togs { /* Menu background */
+background: #000; 
+}
+#nav li { /* Left menu border */
+border-left: 1px solid #666; 
+}
+#nav li a { /* Menu link colour */
+color: #eee; 
+}
+#nav li a:hover { /* Menu link hover */
+color: #f66;  
+}
+a#toggle { /* Menu toggle colour */
+color: #999;
+background: #000; 
+}
+a#toggle:hover { /* Menu toggle hover */
+background: #f33;
+color: #fff;
+}
+h1 { /* Add your own logo */
+height: 69px;
+width: 230px;
+background: url(../images/logo.jpg) 0 0 no-repeat; 
+}
+h2 { /* Article heading colour */
+color: #111; 
+}
+h3 { /* Subheadings colour */ 
+color: #555; 
+}
+h4 { /* Content subheadings colour */
+color: #333;
+}
+.caption { /* Captions */
+font-style: italic;
+color: #aaa;
+}
+a { /* General links colour */ 
+color: #f33; 
+}
+.recent_articles a { /* Recent article links colour */ 
+color: #f66;
+text-decoration: none;
+}
+.recent_articles a:hover { /* Recent article links colour */ 
+color: #f33; 
+}
+#links { /* Base links border */
+border-top: 2px solid #555;
+}
+#links ul { /* Base links inside border */
+border-top: 1px solid #ccc;
+}
+#links ul li { /* Base links non-link colour */
+color: #666;
+}
+#links li a { /* Base links colour */
+color: #f33; 
+}
+#links li.title-links { /* Base links subheading */
+border-right: 1px solid #ccc; 
+}
+#links li.title-links h3 { /* Base links subheading */
+color: #555; 
+}
+
+/* That's it! If you can find your way around a stylesheet, feel free to make further changes. */
+
+/* Page Structure */
+body {
+text-align: center;
+}
+#wrap {
+margin: 0 auto;
+text-align: left;
+}
+#header {
+width: 100%;
+float: left;
+position: relative;
+overflow: hidden;
+}
+#copy, #sub {
+width: 100%;
+float: left;
+margin: 10px 0 20px 0;
+}
+#article {
+width: 100%;
+float: left;
+margin: 0 0 20px 0;
+border-top: 1px solid #ccc;
+}
+#article.static {
+padding: 10px 0 0 0;
+}
+.left {
+float: left;
+width: 29%;
+}
+.right {
+float: right;
+width: 69%;
+}
+#cover {
+text-align: right;
+}
+.realign {
+text-align: left;
+margin: 12px 0 0 0;
+width: 80%;
+float: right;
+}
+/* Typography */ 
+p {
+padding: 8px 20px; 
+}
+p.nextprev {
+padding: 8px 0;
+font-size: 12px;
+color: #ccc;
+}
+p.shortabout {
+float: left;
+margin: 40px 0 20px 20px;
+display: inline;
+padding: 0;
+width: 300px;
+font: italic 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+color: #666;
+}
+sup {
+font: italic 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+padding: 0 5px 0 0;
+color: #777;
+}
+ul {
+margin: 8px 20px;
+list-style: none;
+}
+#recentcomments ul {
+margin: 8px 0;
+}
+li {
+padding: 0 0 0 16px;
+background: url(../images/bullet.gif) 0 0 no-repeat;
+}
+li p {
+padding: 0 20px 8px 20px;
+color: #666;
+}
+dl {
+margin: 8px 20px;
+float: left;
+clear: both;
+border-bottom: 1px solid #ccc;
+display: inline;
+}
+dd {
+float: left;
+width: 100%;
+font-style: italic;
+}
+dt {
+float: right;
+margin: 0 20px 20px 0;
+display: inline;
+color: #888;
+}
+ul#details {
+float: left;
+display: inline;
+margin: 0 0 8px 0;
+width: 100%;
+color: #888;
+font-size: 12px;
+}
+ul#details li {
+margin: 0 0 0 30px;
+float: right;
+display: inline;
+padding: 4px 0 0 6px;
+background: url(../images/details.gif) 0 0 no-repeat;
+}
+#list-categories li {
+margin: 0 0 3px 0;
+}
+.recent_articles li {
+border-bottom: 1px solid #ddd;
+margin: 0 0 2px 0;
+font-style: italic;
+background: none;
+padding: 0;
+}
+blockquote {
+color: #666;
+font-style: italic;
+}
+h1 span {
+display: block;
+overflow: hidden;
+width: 0;
+height: 0;
+}
+h1 {
+float: right;
+margin: 20px 0 10px 0;
+}
+h2 {
+font-size: 12px;
+line-height: 20px;
+font-weight: normal;
+text-align: right;
+margin: 6px 0 0 0;
+}
+h3 {
+margin: 0 20px 0 20px;
+font-weight: normal;
+border-top: 1px solid #ccc;
+font-size: 11px;
+padding: 3px 0 0 0;
+}
+.realign h3 {
+margin: 0 0 0 20px;
+}
+h3 span {
+border-top: 2px solid #555;
+padding: 6px 20px 0 0;
+}
+#recentcomments h3 {
+margin: 0;
+}
+h4 {
+margin: 8px 20px 0 20px;
+font-size: 12px;
+line-height: 16px;
+font-weight: normal;
+}
+.caption span {
+text-align: right;
+display: block;
+border-top: 1px solid #ccc;
+}
+/* Images */
+#header img {
+position: absolute;
+top: 0;
+left: 0;
+}
+#cover img {
+border: 1px solid #ccc;
+margin: 14px 0 0 0;
+padding: 1px;
+}
+/* Links */
+a {
+text-decoration: underline;
+font-weight: normal;
+}
+a:hover, a:active {
+text-decoration: none;
+}
+a img {
+border: none;
+}
+#logo a {
+width: 230px;
+height: 69px;
+display: block;
+}
+.readon {
+float: right;
+margin: 0 20px;
+font-size: 13px;
+}
+h2 a {
+text-decoration: none;
+}
+h2 a:hover {
+text-decoration: underline;
+}
+#links {
+width: 98%;
+float: left;
+padding: 1%;
+}
+#links ul {
+margin: 0;
+width: 100%;
+float: left;
+}
+#links li {
+float: left;
+width: 14%;
+margin: 1% 2% 0 1%;
+padding: 0 0 1% 0;
+line-height: 18px;
+font-size: 12px;
+background: none;
+}
+#links li a {
+display: block;
+}
+#links li.title-links {
+width: 7%;
+padding: 1% 0 0 2%;
+margin: 0 1% 0 0;
+}
+#links li.title-links a {
+margin: 2px 0 0 0;
+}
+#links h3 {
+margin: 0;
+border: 0;
+font-size: 12px;
+line-height: 15px;
+}
+/* Menu */
+#togs {
+width: 100%;
+float: left;
+}
+#nav {
+position: absolute;
+margin: 0;
+width: 100%;
+bottom: 20px;
+left: 0;
+letter-spacing: 1px;
+}
+#nav ul {
+float: left;
+margin: 0 0 0 15px;
+padding: 8px 0;
+width: 100%;
+display: inline;
+}
+#nav li {
+float: left;
+margin: 0;
+padding: 0;
+border-left: 1px solid #666;
+background: none;
+}
+#nav li a {
+float: left;
+display: block;
+padding: 8px 40px 8px 15px;
+text-decoration: none;
+}
+a#toggle {
+text-decoration: none;
+width: 60px;
+padding: 16px;
+display: block;
+text-align: center;
+position: absolute;
+bottom: 20px;
+right: 0;
+font-style: italic;
+letter-spacing: 0;
+z-index: 1;
+}
+/* Footer */
+#footer {
+width: 100%;
+clear: both;
+text-align: right;
+color: #f66;
+border-top: 1px solid #f66;
+font-size: 12px;
+}
+#footer p {
+border-top: 1px solid #f66;
+margin: 1px 0 0 0;
+padding: 10px 0;
+}
+#footer a {
+color: #888;
+}
+/* Forms */
+legend {
+display: none;
+}
+label {
+display: block;
+margin: 0 0 2px 0;
+}
+.help {
+margin: 0 0 0 10px;
+font-size: 11px;
+}
+#zemContactForm {
+float: left;
+margin: 0 20px;
+display: inline;
+}
+#zemContactForm p {
+padding: 8px 0;
+}
+fieldset {
+border: 0;
+}
+input.zemRequired, select#typeofenquiry {
+width: 180px;
+padding: 5px;
+border: 1px solid #ccc;
+border-top-width: 2px;
+font: 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+}
+#enquirydetails {
+float: left;
+width: 260px;
+}
+#enquirysubmit {
+float: left;
+width: 260px;
+}
+.vcard {
+margin: 8px 0;
+}
+select#typeofenquiry {
+width: 194px;
+padding: 5px;
+}
+textarea#enquiry {
+padding: 5px;
+width: 220px;
+border: 1px solid #ccc;
+border-top-width: 2px;
+font: 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+}
+#zemSubmit {
+float: right;
+margin: 0 30px 0 0;
+font: 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+}
+/* Comments */
+.comments_error {
+width: 100%;
+clear: both;
+margin: 20px;
+}
+.comment_name_input, .comment_email_input, .comment_web_input, .txpCommentInputMessage  {
+width: 200px;
+padding: 5px;
+border: 1px solid #ccc;
+border-top-width: 2px;
+font: 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+}
+input.comments_error, textarea.comments_error {
+background: #f66;
+margin: 0;
+padding: 0;
+width: 200px;
+padding: 5px;
+}
+p.commentsubmit {
+padding: 0 20px;
+text-align: right;
+width: 200px;
+}
+.commentsubmit input {
+font: 12px/14px Georgia, Times, "Times New Roman", sans-serif;
+}
+.middot a {
+margin: 0 5px;
+text-decoration: none;
+}
