@@ -137,7 +137,7 @@ width: 29%;
 }
 .right {
 float: right;
-width: 69%;
+width: 100%;
 }
 #cover {
 text-align: right;
@@ -247,7 +247,7 @@ h2 {
 font-size: 12px;
 line-height: 20px;
 font-weight: normal;
-text-align: right;
+text-align: left;
 margin: 6px 0 0 0;
 }
 h3 {
