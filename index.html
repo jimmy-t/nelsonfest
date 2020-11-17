@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 <meta property="og:url" content="http://nelsonfest.com" />
 <meta property="og:title" content="NelsonFest.com" />
 <meta property="og:description" content="(meatspace betting only)" />
 <meta property="og:image" content="http://nelsonfest.com/hahaguy.jpg" />
+    
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="white"/>
+    
+<link rel="icon" href="favicon.ico" type="image/x-icon" />  
+<link rel="apple-touch-icon" href="images/hello-icon-152.png">   
+<meta name="theme-color" content="white"/>  
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-title" content="Hello World"> 
+<meta name="msapplication-TileImage" content="images/hello-icon-144.png">  
+<meta name="msapplication-TileColor" content="#FFFFFF">
+
 <style>
 canvas {
     border:1px solid #d3d3d3;
     background-color: #00AA00;
 }
+
+.fullscreen {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#body-container {
+    margin:auto;
+    text-align:center;
+}
+
 </style>
 </head>
 <!-- Inspired by https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity -->
-<body onload="startGame()">
-		
-<div id="body-container" style="width:100%; text-align:center;">
+<body class="fullscreen" onload="startGame()">
+
+<noscript>JavaScript is required.</noscript>
+    
+<div id="body-container">
 	<img id="nelson-fest-title" src="http://nelsonfest.com/nelsonfest.png" style="display:inline-block;">
 	<br/>
 	<div id="game-container" style="width:480px; display:inline-block;" >
@@ -26,7 +55,7 @@ canvas {
 		<button id="game-button" style="height:100px; width:100%; background: url('http://nelsonfest.com/nelsonfest_gobutton.png') no-repeat;" onmousedown="go()" onmouseup=";"></button>
 		<br>
 		<br>
-		<button id="again-button" onmousedown="again()" onmouseup=";" style="width: 150px; height: 25px; margin: 2em auto; cursor: pointer; display: block; background: url('http://nelsonfest.com/nelsonfest_againbutton.png') no-repeat;""></button>
+		<button id="again-button" onmousedown="again()" onmouseup=";" style="width: 150px; height: 25px; margin: 2em auto; cursor: pointer; display: block; background: url('http://nelsonfest.com/nelsonfest_againbutton.png') no-repeat;"></button>
 	</div>
 	
 	<div id="youtube-container" style="width:100%; display:inline-block;">
@@ -91,7 +120,18 @@ function shuffle(array) {
     return array;
 }
 
+function startSw() {
+  'use strict';
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./sw.js');
+  }
+}
+    
 function startGame() {
+    startSw();
+    
 	var colors = shuffle([
 		"red", "orange", "yellow", "green", "blue"
 	]);
@@ -266,5 +306,6 @@ function again() {
     }
   }
 </script>
+
 </body>
 </html>
