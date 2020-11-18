@@ -1,7 +1,7 @@
-var cacheName = 'hello-pwa';
+var cacheName = 'nelsonfest';
 var filesToCache = [
   '/',
-  '/index.html'//,
+//  '/index.html'//,
 //  '/css/style.css',
 //  '/js/main.js'
 ];
