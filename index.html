@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width;initial-scale=1.0;maximum-scale=1.0;user-scalable=0;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta property="og:url" content="https://nelsonfest.com" />
 <meta property="og:title" content="NelsonFest" />
 <meta property="og:description" content="(meatspace betting only)" />
@@ -37,22 +37,34 @@ canvas {
     margin:auto;
     text-align:center;
 }
+    
+#nelson-fest-title {
+    width:100%;
+}
+
+#game-button {
+    background-size: 100%;
+    touch-action: manipulation;
+    height:100px;
+    width:100%;
+    background: url('https://nelsonfest.com/nelsonfest_gobutton.png') no-repeat center;
+}
 
 </style>
 </head>
 <!-- Inspired by https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity -->
-<body class="fullscreen" onload="startGame()">
+<body class="fullscreen" onload="init()">
 
 <noscript>JavaScript is required.</noscript>
     
 <div id="body-container">
 	<img id="nelson-fest-title" src="https://nelsonfest.com/nelsonfest.png" style="display:inline-block;">
 	<br/>
-	<div id="game-container" style="width:480px; display:inline-block;" >
+	<div id="game-container" style="width:100%; display:inline-block;" >
 		<div id="canvas-container" style="height:110px; width:100%; margin-top:20px; margin-bottom:20px;">
 			<div id="canvas-marker"></div>
 		</div>
-		<button id="game-button" style="height:100px; width:100%; background: url('https://nelsonfest.com/nelsonfest_gobutton.png') no-repeat;" onmousedown="go()" onmouseup=";"></button>
+		<button id="game-button" onmousedown="go()" onmouseup=";"></button>
 		<br>
 		<br>
 		<button id="again-button" onmousedown="again()" onmouseup=";" style="width: 150px; height: 25px; margin: 2em auto; cursor: pointer; display: block; background: url('https://nelsonfest.com/nelsonfest_againbutton.png') no-repeat;"></button>
@@ -84,11 +96,14 @@ var isWinnerAnnounced;
 var winners;
 var winnerNames;
 var finishLine;
+var canvasWidth = window.innerWidth - 2;
+var canvasHeight = window.innerWidth / 4;
+
 var myGameArea = {
 	canvas : document.createElement("canvas"),
 	start : function() {
-		this.canvas.width = 480;
-		this.canvas.height = 110;
+		this.canvas.width = canvasWidth;
+		this.canvas.height = canvasHeight;
 		this.context = this.canvas.getContext("2d");
 		document.getElementById('canvas-marker').parentNode.insertBefore(this.canvas, document.getElementById('canvas-marker'));
 		this.frameNo = 0;
@@ -120,6 +135,11 @@ function shuffle(array) {
     return array;
 }
 
+function init() {
+    startSw();
+    startGame();
+}
+
 function startSw() {
   'use strict';
 
@@ -129,26 +149,33 @@ function startSw() {
   }
 }
     
-function startGame() {
-    startSw();
-    
+function startGame() {    
 	var colors = shuffle([
 		"red", "orange", "yellow", "green", "blue"
 	]);
 	
+    var horseWidth = canvasWidth / 14;
+    var horseHeight = canvasHeight / 11;
+    
     horses = [
-    	new component(30, 10, colors[0], 10, 10),
-    	new component(30, 10, colors[1], 10, 30),
-    	new component(30, 10, colors[2], 10, 50),
-    	new component(30, 10, colors[3], 10, 70),
-    	new component(30, 10, colors[4], 10, 90)
+    	new component(horseWidth, horseHeight, colors[0], 10, horseHeight),
+    	new component(horseWidth, horseHeight, colors[1], 10, horseHeight * 3),
+    	new component(horseWidth, horseHeight, colors[2], 10, horseHeight * 5),
+    	new component(horseWidth, horseHeight, colors[3], 10, horseHeight * 7),
+    	new component(horseWidth, horseHeight, colors[4], 10, horseHeight * 9)
     ];
 	
 	finishers = [];
 	gameover = false;
 	isWinnerAnnounced = false;
 	winnerNames = "";
-	finishLine = new component(10, 270, "white", 450, 0);
+    
+    var finishWidth = horseHeight;
+    var finishHeight = canvasHeight;
+    var finishX = canvasWidth - 2 * finishWidth;
+    var finishY = 0;
+    
+	finishLine = new component(finishWidth, finishHeight, "white", finishX, finishY);
 	myGameArea.start();
 }
 
