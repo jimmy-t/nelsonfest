@@ -47,6 +47,7 @@ canvas {
     touch-action: manipulation;
     height:100px;
     width:100%;
+    max-width: 408px;
     background: url('https://nelsonfest.com/nelsonfest_gobutton.png') no-repeat center;
 }
 
@@ -61,7 +62,7 @@ canvas {
 	<img id="nelson-fest-title" src="https://nelsonfest.com/nelsonfest.png" style="display:inline-block;">
 	<br/>
 	<div id="game-container" style="width:100%; display:inline-block;" >
-		<div id="canvas-container" style="height:110px; width:100%; margin-top:20px; margin-bottom:20px;">
+		<div id="canvas-container" style="width:100%; margin-top:20px; margin-bottom:20px;">
 			<div id="canvas-marker"></div>
 		</div>
 		<button id="game-button" onmousedown="go()" onmouseup=";"></button>
