@@ -40,6 +40,7 @@ canvas {
     
 #nelson-fest-title {
     width:100%;
+    max-width: 500px;
 }
 
 #game-button {
@@ -97,8 +98,8 @@ var isWinnerAnnounced;
 var winners;
 var winnerNames;
 var finishLine;
-var canvasWidth = window.innerWidth - 2;
-var canvasHeight = window.innerWidth / 4;
+var canvasWidth = Math.min(window.innerWidth, 800) - 2;
+var canvasHeight = Math.min(window.innerWidth, 800) / 4;
 
 var myGameArea = {
 	canvas : document.createElement("canvas"),
