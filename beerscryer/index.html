@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta property="og:url" content="https://nelsonfest.com/beerscryer" />
+<meta property="og:title" content="Beerscryer" />
+<meta property="og:description" content="(meatspace drinking only)" />
+<meta property="og:image" content="https://nelsonfest.com/hahaguy.jpg" />
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="white"/>
+    
+<link rel="icon" href="favicon.ico" type="image/x-icon" />  
+<link rel="apple-touch-icon" href="images/hello-icon-152.png">   
+<meta name="theme-color" content="white"/>  
+<meta name="apple-mobile-web-app-capable" content="yes">  
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="apple-mobile-web-app-title" content="Beerscryer"> 
+<meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #00AA00;
+}
+
+.fullscreen {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#body-container {
+    margin:auto;
+    text-align:center;
+    overscroll-behavior-y: none;
+}
+    
+#nelson-fest-title {
+    width:100%;
+    max-width: 500px;
+}
+
+.bodybackground {
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  background: 
+  		/* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(14, 0, 0, 0.9), 
+          rgba(14, 0, 0, 0.9)
+        ),
+        /* bottom, image */
+        url(./orb-ponder.jpg) no-repeat top center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+</style>
+</head>
+<body class="fullscreen bodybackground" onload="init()">
+
+<noscript>JavaScript is required.</noscript>
+    
+<div id="body-container">
+
+</div>
+
+
+<script>
+function init() {
+	console.log("starting up!");
+}
+
+function initNotifications() {
+    Notification.requestPermission(function(status) {
+        console.log('Notification permission status:', status);
+    });
+}
+
+function displayNotification() {
+  if (Notification.permission == 'granted') {
+    navigator.serviceWorker.getRegistration().then(function(reg) {
+      var options = {
+        body: 'Here is a notification body!',
+        icon: 'images/example.png',
+        vibrate: [100, 50, 100],
+        data: {
+          dateOfArrival: Date.now(),
+          primaryKey: 1
+        }
+      };
+      reg.showNotification('Hello world!', options);
+    });
+  }
+}
+
+function startSw() {
+  'use strict';
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('./sw.js');
+  }
+}
+</script>
+
+</body>
+</html>
