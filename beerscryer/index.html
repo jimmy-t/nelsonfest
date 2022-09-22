@@ -7,7 +7,7 @@
 <meta property="og:description" content="(meatspace drinking only)" />
 <meta property="og:image" content="https://nelsonfest.com/hahaguy.jpg" />
 
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="white"/>
     
 <link rel="icon" href="favicon.ico" type="image/x-icon" />  
@@ -47,14 +47,17 @@ canvas {
 .bodybackground {
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
+
+	background:rgb(96, 96, 96);
   background: 
-  		/* top, transparent black, faked with gradient */ 
+        /* top, transparent black, faked with gradient */ 
         linear-gradient(
-          rgba(14, 0, 0, 0.9), 
-          rgba(14, 0, 0, 0.9)
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
         ),
         /* bottom, image */
-        url(./orb-ponder.jpg) no-repeat top center fixed; 
+        url(./orb-ponder.jpg) no-repeat top center fixed;
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -66,7 +69,7 @@ canvas {
 <body class="fullscreen bodybackground" onload="init()">
 
 <noscript>JavaScript is required.</noscript>
-    
+  	
 <div id="body-container">
 
 </div>

@@ -1,4 +1,4 @@
-var cacheName = 'nelsonfest';
+var cacheName = 'beerscryer';
 var filesToCache = [
   '/',
 //  '/index.html'//,
