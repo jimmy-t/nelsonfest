@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>DiscSplitter</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+
+<script type="text/javascript"> 
+
+// Taken from https://stackoverflow.com/a/6714233/381633
+String.prototype.replaceAll = function(str1, str2, ignore) {
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
+
+const splitBulletedText = () => {
+    // The Google docs markdown-converter extension makes bullet indentation 4 spaces, but Discord markdown expects 2 spaces.
+	const input = $("#input").val().replace(/(\n)(    )+(\*)/g, (match) => match.replace(/(    )/g, '  '));
+
+	const chunkSize = parseInt($("#chunkSize").val());
+    const output = $("#output");
+    output.empty();
+
+    if (!input || input.length <= 0) {
+        console.log("no input");
+        return;
+    }
+
+    const topBullets = input.split(/\n\*/);
+
+    const chunks = [""];
+
+    $.each(topBullets, (i, rawBulletText) => {
+        const bulletText = ((i > 0 ? "\n*" : "") + rawBulletText).trimEnd();
+        const prospectiveChunkLength = chunks[chunks.length - 1].length + bulletText.length;
+
+        if (prospectiveChunkLength > chunkSize) {
+            chunks.push("");
+        }
+
+        chunks[chunks.length - 1] = chunks[chunks.length - 1] + bulletText;
+    });
+
+    $.each(chunks, (i, chunkText) => {
+        const chunkTextOutput = $('<textarea class="outputText"></textarea>');
+        chunkTextOutput.val(chunkText.trim());
+        chunkTextOutput.attr({
+            disabled: 1
+        });
+        setTimeout(function() {
+            const newHeight = chunkTextOutput.attr('scrollHeight') + 2;
+            chunkTextOutput.css({
+                'height': newHeight + 'px',
+            });
+        }, 0);
+        
+
+        const chunkOutputContainer = $('<div></div>');
+        chunkOutputContainer.append(chunkTextOutput);
+        output.append(chunkOutputContainer);
+    });
+};
+
+
+const oldsplitText = () => {
+    const input = $("#input").val();
+    const chunkSize = parseInt($("#chunkSize").val());
+    const output = $("#output");
+    output.empty();
+
+    if (!input || input.length <= 0) {
+        console.log("no input");
+        return;
+    }
+
+    const topBullets = $("#input").val().split(/(?=\n\*)/);
+
+    const chunks = [];
+    let chunkStartIndex = 0;
+    let chunkEndIndex = Math.min(chunkSize, input.length);
+// $("#input").val().match(*/\n\*+.*|*.*/g)
+    while (chunkStartIndex < input.length) {
+        if (chunkEndIndex + chunkSize < input.length) {
+            while (CHUNK_START_DELIMITER != input.slice(chunkEndIndex - 1, chunkEndIndex + 1)) {
+                chunkEndIndex--;
+            }
+        }
+
+        const chunkText = input.slice(chunkStartIndex, chunkEndIndex);
+        chunks.push(chunkText);
+
+        chunkStartIndex = chunkEndIndex;
+        chunkEndIndex = Math.min(chunkStartIndex + chunkSize, input.length);
+    }
+
+    $.each(chunks, function(i, chunkText) {
+        const chunkTextOutput = $('<textarea class="outputText"></textarea>');
+        chunkTextOutput.val(chunkText);
+        chunkTextOutput.attr({
+            disabled: 1
+        });
+        setTimeout(function() {
+            const newHeight = chunkTextOutput.attr('scrollHeight') + 2;
+            chunkTextOutput.css({
+                'height': newHeight + 'px',
+            });
+        }, 0);
+        
+
+        const chunkOutputContainer = $('<div></div>');
+        chunkOutputContainer.append(chunkTextOutput);
+        output.append(chunkOutputContainer);
+    });
+};
+
+jQuery(document).ready(function(){ 
+    $("#input").bind("input change", function() {
+    	splitBulletedText();
+    });
+});
+</script>
+
+<style>
+#input {
+    width: 100%;
+}
+
+#output {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.outputText {
+    width: 100%;
+    height:  auto;
+}
+</style>
+
+</head>
+
+<body>
+<div>
+	<input id="chunkSize" type="text" placeholder="Chunk Size" value="2000"/>
+    <textarea id="input" placeholder="Paste in a huge message and we'll break it up into easily-copyable chunks."></textarea>
+    <div id="output"></div>
+</div>
+</body>
+
+</html>
